@@ -1,0 +1,26 @@
+<%= render 'partials/navbar' %>
+
+<h1 class='text-center mt-3 mb-5'>List of food avalilabe in this - <%= @restaurant.name %></h1>
+<p class='text-center'><%= link_to :back, restaurants_path %></p>
+
+<table class='m-auto'>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Status</th>
+			<th>Actions</th>
+	</thead>
+	<tbody>
+	<% @foods.each do |food| %>
+		<tr>
+			<td><%= food.id %></td>
+			<td><%= food.name %></td>
+			<td><%= food.price %></td>
+            <td><%= food.status %></td>
+			<td><%= link_to :add_to_cart,'#' %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

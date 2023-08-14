@@ -1,0 +1,28 @@
+<%= render 'partials/navbar' %>
+
+<h1 class='text-center mt-3 mb-5'>Food's List</h1>
+
+<table class='m-auto'>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Prise</th>
+			<th>Status</th>
+            <th>Restaurant Name</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% Food.all.each do |food| %>
+		<tr>
+			<td><%= food.id %></td>
+			<td><%= food.name %></td>
+			<td><%= food.price %></td>
+			<td><%= food.status %></td>
+            <td><%= food.restaurant.name %></td>
+			<td><%= link_to :delete, food_url(food), data: { turbo_method: :delete } %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

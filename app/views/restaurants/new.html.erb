@@ -1,0 +1,32 @@
+<%= render 'partials/navbar' %>
+
+<h1 class='text-center mt-3 mb-5'>Restaurant Registration</h1>
+
+<div class='col-3 m-auto'>
+	<%= form_with(model: @restaurant, url: restaurants_url) do |form|  %>
+		<%= form.label :name %>
+		<%= form.text_field :name, class: 'form-control mb-2' %>
+		<p class='mb-2 text-danger'><%= @restaurant.errors[:name].join(',') %></p>
+
+		<%= form.label :description %>
+		<%= form.text_field :description, class: 'form-control mb-2' %>
+
+		<%= form.label :address %>
+		<%= form.text_field :address, class: 'form-control mb-2' %>
+		<p class='mb-2 text-danger'><%= @restaurant.errors[:address].join(',') %></p>
+
+		<%= form.label :email %>
+		<%= form.email_field :email, class: 'form-control mb-2' %>
+		<p class='mb-2 text-danger'><%= @restaurant.errors[:email].join(',') %></p>
+
+		<%= form.label :number %>
+		<%= form.number_field :number, class: 'form-control mb-2' %>
+		<p class='mb-2 text-danger'><%= @restaurant.errors[:number].join(',') %></p>
+
+		<%= form.label :founder_name %>
+		<%= form.text_field :founder_name, class: 'form-control mb-2' %>
+		<p class='mb-2 text-danger'><%= @restaurant.errors[:founder_name].join(',') %></p>
+
+		<%= form.submit :Register, class: 'btn btn-success mt-4 mb-4' %>
+	<% end %>
+</div>
