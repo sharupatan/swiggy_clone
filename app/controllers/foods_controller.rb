@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
-	load_and_authorize_resource
+	load_and_authorize_resource except: [:create]
+
 	def index
 	end
 
@@ -10,7 +11,7 @@ class FoodsController < ApplicationController
 	def create
 		@food = Food.new(params.require(:food).permit!)
 		if @food.save
-				redirect_to admin_foods_path
+				redirect_to foods_path
 		else
 				render :new, status: 422
 		end

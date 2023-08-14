@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   def index
 		@q = Restaurant.ransack(params[:q])
 		@restaurants = @q.result
@@ -10,9 +10,10 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurant = Restaurant.new(params.require(:restaurant).permit!)
+		puts 'form data is gotten'
+		@restaurant = Restaurant.new(require_permitted_params)
 		if @restaurant.save
-			redirect_to admin_restaurants_path
+			redirect_to restaurants_path
 		else
 			render :new, status: 422
 		end
@@ -21,5 +22,16 @@ class RestaurantsController < ApplicationController
 	def show
 		@restaurant = Restaurant.find(params.require(:id))
 		@foods = @restaurant.foods
+	end
+
+	def destroy
+		Restaurant.find(params.require(:id)).destroy
+		redirect_to restaurants_path
+	end
+
+	private
+
+	def require_permitted_params
+		params.require(:restaurant).permit(:name,:description,:address,:email,:number,:founder_name)
 	end
 end

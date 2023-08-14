@@ -31,7 +31,10 @@
 			<td><%= restaurant.address %></td>
 			<td><%= restaurant.email %></td>
 			<td><%= restaurant.number %></td>
-			<td><%= link_to :visit, restaurant_url(restaurant) %></td>
+			<td>
+			<%= link_to :visit, restaurant_url(restaurant) %>
+			<%= link_to :delete, restaurant_url(restaurant), data: {turbo_method: :delete}%>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>

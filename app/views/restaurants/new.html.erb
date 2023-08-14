@@ -3,7 +3,7 @@
 <h1 class='text-center mt-3 mb-5'>Restaurant Registration</h1>
 
 <div class='col-3 m-auto'>
-	<%= form_with(model: @restaurant, url: restaurants_url) do |form|  %>
+	<%= form_with model: @restaurant do |form|  %>
 		<%= form.label :name %>
 		<%= form.text_field :name, class: 'form-control mb-2' %>
 		<p class='mb-2 text-danger'><%= @restaurant.errors[:name].join(',') %></p>
