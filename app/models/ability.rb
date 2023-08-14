@@ -4,7 +4,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-   
     can :read, Restaurant
     can :read, Food
     

@@ -3,16 +3,16 @@ class FoodsController < ApplicationController
 	end
 
 	def new
-			@food = Food.new
+		@food = Food.new
 	end
 
 	def create
-			@food = Food.new(params.require(:food).permit!)
-			if @food.save
-					redirect_to admin_foods_path
-			else
-					render :new, status: 422
-			end
+		@food = Food.new(params.require(:food).permit!)
+		if @food.save
+				redirect_to admin_foods_path
+		else
+				render :new, status: 422
+		end
 	end
 
 	def destroy
