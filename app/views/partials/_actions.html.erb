@@ -1,3 +1,8 @@
 <li class="nav-item d-flex align-items-center">
-    <%= link_to "Profile", '/profile', class: 'nav-link badge bg-info ms-2' %>
+    <%= link_to "Profile", '/profile', class: 'nav-link' %>
+    <% if !can? :manage, Food  %>
+    <button type="button" class="btn btn-primary">
+        Cart <span class="badge text-bg-secondary"><%= User.count %></span>
+    </button>
+    <% end %>
 </li>
