@@ -21,7 +21,11 @@
 			<td><%= food.price %></td>
 			<td><%= food.status %></td>
             <td><%= food.restaurant.name %></td>
+			<% if can? :manage, Food %>
 			<td><%= link_to :delete, food_url(food), data: { turbo_method: :delete } %></td>
+			<% else %>
+			<td><%= link_to :Add_to_cart, food_url(food) %></td>
+			<% end %>
 		</tr>
 		<% end %>
 	</tbody>

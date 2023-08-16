@@ -33,7 +33,9 @@
 			<td><%= restaurant.number %></td>
 			<td>
 			<%= link_to :visit, restaurant_url(restaurant) %>
+			<% if can? :manage, Food %>
 			<%= link_to :delete, restaurant_url(restaurant), data: {turbo_method: :delete}%>
+			<% end %>
 			</td>
 		</tr>
 		<% end %>
