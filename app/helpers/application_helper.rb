@@ -4,6 +4,6 @@ module ApplicationHelper
 	end
 
 	def cart_items_count
-		current_user.cart ? current_user.cart.length : 0
+		current_user.cart ? current_user.cart.products.length : 0
 	end
 end

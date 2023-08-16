@@ -1,0 +1,16 @@
+<%= render 'partials/navbar' %>
+
+
+<ul>
+    <% User.all.each do |user| %>
+        <li>
+            <% if !user.cart.nil? %>
+                <ul>
+                    <% user.cart.products.each do |product| %>
+                        <li><%= product.attributes['name'] %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
