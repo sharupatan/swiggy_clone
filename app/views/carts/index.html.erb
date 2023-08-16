@@ -1,16 +1,33 @@
 <%= render 'partials/navbar' %>
 
+<% cart_items = current_user.cart.products %>
+<% total = 0 %>
+<% cart_items.map { |item| total += (item.quantity*item.price) } %>
+
+<div class="btn-group m-3" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary">Items - <%= cart_items.length %></button>
+  <button type="button" class="btn btn-primary">$ <%= total %></button>
+  <%# <button type="button" class="btn btn-primary">Right</button> %>
+</div>
 
 <ul>
-    <% User.all.each do |user| %>
-        <li>
-            <% if !user.cart.nil? %>
-                <ul>
-                    <% user.cart.products.each do |product| %>
-                        <li><%= product.attributes['name'] %></li>
-                    <% end %>
-                </ul>
-            <% end %>
+    <% cart_items.each do |product| %>
+        <li class='m-2 list-unstyled'>
+            <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">$ <%= product.price %></h6>
+
+                <% cond = 'disabled' %>
+                <% if product.quantity > 1 %>
+                    <% cond = '' %>
+                <% end %>
+                <%= link_to '-', "/q_decrease/#{product.id}", class: "btn btn-danger #{cond}" %>
+                
+                <p class= 'badge bg-info' ><%= "#{product.quantity}" %></p>
+                <%= link_to '+', "/q_increase/#{product.id}", class: 'btn btn-success' %>
+            </div>
+            </div>
         </li>
     <% end %>
 </ul>

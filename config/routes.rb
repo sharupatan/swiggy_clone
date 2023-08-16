@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :foods
   resources :carts
 
+  get 'q_increase/:id' => 'carts#q_increase'
+  get 'q_decrease/:id' => 'carts#q_decrease'
+
   get 'profile' => 'profiles#index'
   get '*path' => 'not_found#index'
 end
