@@ -1,8 +1,8 @@
 <li class="nav-item d-flex align-items-center">
     <%= link_to "Profile", '/profile', class: 'nav-link' %>
     <% if !can? :manage, Food  %>
-    <button type="button" class="btn btn-primary">
+    <%= link_to carts_path, class: 'btn btn-primary' do %>
         Cart <span class="badge text-bg-secondary"><%= cart_items_count %></span>
-    </button>
+    <% end %>
     <% end %>
 </li>
