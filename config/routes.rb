@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :foods
 
+  get 'profile' => 'profiles#index'
   get '*path' => 'not_found#index'
 end
