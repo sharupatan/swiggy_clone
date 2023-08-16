@@ -10,7 +10,6 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
-		puts 'form data is gotten'
 		@restaurant = Restaurant.new(require_permitted_params)
 		if @restaurant.save
 			redirect_to restaurants_path
