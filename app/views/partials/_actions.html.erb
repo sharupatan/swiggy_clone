@@ -2,7 +2,7 @@
     <%= link_to "Profile", '/profile', class: 'nav-link' %>
     <% if !can? :manage, Food  %>
     <button type="button" class="btn btn-primary">
-        Cart <span class="badge text-bg-secondary"><%= User.count %></span>
+        Cart <span class="badge text-bg-secondary"><%= cart_items_count %></span>
     </button>
     <% end %>
 </li>
