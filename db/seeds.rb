@@ -24,3 +24,9 @@ r1.foods.create(name: 'dosa', price: '100', status: 'AVAILABLE')
 r2.foods.create(name: 'icecream', price: '100', status: 'AVAILABLE')
 r2.foods.create(name: 'puri', price: '100', status: 'AVAILABLE')
 r2.foods.create(name: 'chapathi', price: '100', status: 'AVAILABLE')
+
+User.destroy_all
+
+admin = User.create(email: 'admin@gmail.com', password: 'admin123', user_role: 'admin')
+customer = User.create(email: 'customer@gmail.com', password: 'customer123', user_role: 'customer')
+stranger = User.create(email: 'stranger@gmail.com', password: 'stranger123', user_role: 'stranger')
