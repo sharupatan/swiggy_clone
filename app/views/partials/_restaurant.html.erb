@@ -1,0 +1,12 @@
+<li class="nav-item">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu">
+    <% if can? :manage, Restaurant %>
+        <li><%= link_to 'Add Restaurant', new_restaurant_path, class: 'dropdown-item' %></li>
+    <% end %>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</li>
