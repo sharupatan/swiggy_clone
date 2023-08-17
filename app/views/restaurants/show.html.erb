@@ -19,7 +19,9 @@
 			<td><%= food.name %></td>
 			<td><%= food.price %></td>
             <td><%= food.status %></td>
-			<td><%= link_to :add_to_cart,'#' %></td>
+			<td>
+				<%= link_to :add_to_cart, "/add_cart/#{food.id}" %>
+			</td>
 		</tr>
 		<% end %>
 	</tbody>

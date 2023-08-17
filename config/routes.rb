@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :foods
   resources :carts
 
+  get 'add_cart/:id' => 'carts#add_to_cart'
+
   get 'q_increase/:id' => 'carts#q_increase'
   get 'q_decrease/:id' => 'carts#q_decrease'
 

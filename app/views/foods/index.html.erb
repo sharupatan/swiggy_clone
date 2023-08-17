@@ -5,28 +5,23 @@
 <table class='m-auto'>
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Prise</th>
-			<th>Status</th>
-            <th>Restaurant Name</th>
-			<th>Actions</th>
+			<%= render_items_headers %>
 		</tr>
 	</thead>
+
 	<tbody>
-	<% Food.all.each do |food| %>
-		<tr>
-			<td><%= food.id %></td>
-			<td><%= food.name %></td>
-			<td><%= food.price %></td>
-			<td><%= food.status %></td>
-            <td><%= food.restaurant.name %></td>
-			<% if can? :manage, Food %>
-			<td><%= link_to :delete, food_url(food), data: { turbo_method: :delete } %></td>
-			<% else %>
-			<td><%= link_to :Add_to_cart, food_url(food) %></td>
-			<% end %>
-		</tr>
+		<% Food.all.each do |food| %>
+			<tr>
+				<%= render_items_data(food) %>
+				
+				<% if can? :manage, Food %>
+				<td><%= link_to :delete, food_url(food), data: { turbo_method: :delete } %></td>
+				<% else %>
+				<td>
+					<%= link_to :add_to_cart, "add_cart/#{food.id}" %>
+				</td>
+				<% end %>
+			</tr>
 		<% end %>
 	</tbody>
 </table>

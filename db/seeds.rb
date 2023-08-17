@@ -17,16 +17,22 @@ Restaurant.create(name: 'Red Chillies3', description: 'Available west indian foo
 Restaurant.create(name: 'Red Chillies4', description: 'Available north indian food',
     address: 'tirupati', email: 'red4@gmail.com', number: '9014861213', founder_name: 'sharukhan4')
                      
-Food.destroy_all
+# Food.destroy_all
 
-r1.foods.create(name: 'idly', price: '100', status: 'AVAILABLE')
-r1.foods.create(name: 'dosa', price: '100', status: 'AVAILABLE')
-r2.foods.create(name: 'icecream', price: '100', status: 'AVAILABLE')
-r2.foods.create(name: 'puri', price: '100', status: 'AVAILABLE')
-r2.foods.create(name: 'chapathi', price: '100', status: 'AVAILABLE')
+r1.foods.create(name: 'idly', price: 100, status: 'AVAILABLE')
+r1.foods.create(name: 'dosa', price: 100, status: 'AVAILABLE')
+r2.foods.create(name: 'icecream', price: 100, status: 'AVAILABLE')
+r2.foods.create(name: 'puri', price: 100, status: 'AVAILABLE')
+r2.foods.create(name: 'chapathi', price: 100, status: 'AVAILABLE')
 
 User.destroy_all
 
 admin = User.create(email: 'admin@gmail.com', password: 'admin123', user_role: 'admin')
 customer = User.create(email: 'customer@gmail.com', password: 'customer123', user_role: 'customer')
 stranger = User.create(email: 'stranger@gmail.com', password: 'stranger123', user_role: 'stranger')
+
+cart = Cart.create(user_id: customer.id)
+
+cart.products.create(name:'idly', price: 100, quantity:1)
+cart.products.create(name:'dosa', price: 100, quantity:1)
+cart.products.create(name:'puri', price: 100, quantity:1)

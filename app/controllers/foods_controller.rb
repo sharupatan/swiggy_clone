@@ -11,9 +11,9 @@ class FoodsController < ApplicationController
 	def create
 		@food = Food.new(params.require(:food).permit!)
 		if @food.save
-				redirect_to foods_path
+			redirect_to foods_path
 		else
-				render :new, status: 422
+			render :new, status: 422
 		end
 	end
 
