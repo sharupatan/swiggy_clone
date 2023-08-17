@@ -6,7 +6,6 @@ class Ability
   def initialize(user)
     if user.customer?
       can :read, Restaurant
-      can :read, Food
       can :manage, Cart
     elsif user.admin?
       can :manage, Restaurant
