@@ -4,12 +4,17 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Restaurant
-    can :read, Food
-    
-    if user.admin?
+    if user.customer?
+      can :read, Restaurant
+      can :read, Food
+      can :manage, Cart
+    elsif user.admin?
       can :manage, Restaurant
       can :manage, Food
+      can :manage, Cart
+    else
+      can :read, Restaurant
+      can :read, Food
     end
   end
 end

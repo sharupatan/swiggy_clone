@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def admin?
     user_role == 'admin'
   end
+
+  def customer?
+    user_role == 'customer'
+  end
 end
