@@ -11,8 +11,11 @@
 <% else %>
 
 <div class="btn-group m-3" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-primary">Items - <%= cart_items.length %></button>
-  <button type="button" class="btn btn-primary">$ <%= total %></button>
+  <button type="button" class="btn btn-info">Items - <%= cart_items.length %></button>
+  <button type="button" class="btn btn-info">$ <%= total %></button>
+  <%= link_to '/checkout' do %>
+    <button type="button" class="btn btn-success">Order Now</button>
+  <% end %>
 </div>
 
 <ul>
