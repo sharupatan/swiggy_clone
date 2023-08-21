@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :foods
   resources :carts
+  resources :payments
 
   get 'add_cart/:id' => 'carts#add_to_cart'
 

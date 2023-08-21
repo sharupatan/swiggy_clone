@@ -12,10 +12,21 @@
 
 <div class="btn-group m-3" role="group" aria-label="Basic example">
   <button type="button" class="btn btn-info">Items - <%= cart_items.length %></button>
-  <button type="button" class="btn btn-info">$ <%= total %></button>
-  <%= link_to '/checkout' do %>
-    <button type="button" class="btn btn-success">Order Now</button>
-  <% end %>
+  <button type="button" class="btn btn-info me-2">$ <%= total %></button>
+  <%#= link_to '/checkout' do %>
+    <%# <button type="button" class="btn btn-success">Order Now</button> %>
+  <%# end %>
+
+  <%= form_tag payments_path do %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Payment Details"
+    data-amount="500"
+    data-locale="auto">
+  </script>
+<% end %>
+
 </div>
 
 <ul>
