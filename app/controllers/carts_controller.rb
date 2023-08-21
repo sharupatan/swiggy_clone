@@ -2,6 +2,9 @@ class CartsController < ApplicationController
     load_and_authorize_resource except: [:q_increase, :q_decrease, :destroy, :add_to_cart]
     
     def index
+        unless current_user.cart
+            Cart.create(user_id:current_user.id)
+        end
     end
 
     def add_to_cart
