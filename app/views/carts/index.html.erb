@@ -7,7 +7,18 @@
 
 
 <% if cart_items.empty? %>
-    <h1>Cart is Empty!</h1>
+    <div class="container mt-3">
+    <div class="text-center py-6">
+        <img width="250" src="http://www.dev.athenainstitute.com/Atropos%2021-BS5-WB05SR527/demo.files/svg/illustrations/shop.svg" alt="cart empty">
+        <h1 class="mt-4">Your cart is empty</h1>
+        <p class="lead">Before placing an order, add products to your cart.</p>
+        
+        <%= link_to restaurants_path, class:"btn btn-primary rounded-pill" do %>
+            <span>Start Shopping</span>
+        <% end %>
+        </a>
+    </div>
+    </div>
 <% else %>
 
 <div class="btn-group m-3" role="group" aria-label="Basic example">
